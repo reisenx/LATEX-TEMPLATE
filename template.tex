@@ -1,0 +1,156 @@
+% DOCUMENT CLASS SETUP
+\documentclass[12pt, a4paper]{article}
+
+% DOCUMENT PACKAGES
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titling}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+
+% FONT AND ENCODING SETUP
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{fontspec}
+
+% PROFESSIONAL CODE BLOCK
+\usepackage{tcolorbox}
+\tcbuselibrary{minted, skins, breakable}
+
+% DEFINE GITHUB DARK THEME COLORS %
+\definecolor{ghback}{HTML}{0d1117}    % Dark background
+\definecolor{ghtext}{HTML}{c9d1d9}    % Light gray text
+\definecolor{ghborder}{HTML}{30363d}  % GitHub Border color
+
+% PROFESSIONAL CODE BLOCK CONFIGURATION (MINTED VERSION) %
+\renewcommand{\theFancyVerbLine}{\textcolor{white!60!gray}{\scriptsize\arabic{FancyVerbLine}}}
+\newtcblisting{codeblock}[2][]{
+    enhanced,
+    breakable,
+    colback=ghback,
+    colframe=ghborder,
+    coltitle=ghtext,
+    fonttitle=\bfseries\small,
+    arc=3mm,
+    boxrule=0.5mm,
+    % PADDING SETTINGS
+    left=25pt,
+    right=10pt,
+    top=5pt,
+    bottom=5pt,
+    % MINTED SETTINGS
+    listing engine=minted,
+    listing only,
+    minted language=python,
+    minted options={
+        linenos,
+        numbersep=5pt,
+        fontsize=\footnotesize,
+        breaklines=true,
+        breakanywhere=true,
+        autogobble,
+        style=monokai,
+    },
+    title={#2},
+    #1
+}
+
+% DOCUMENT TITLE SETUP %
+\title {
+	\textbf{2110446 DATA SCIENCE AND DATA ENGINEERING} \\
+    \vspace{1em}
+	\Large{\textbf{Homework 3: Decision Tree}} \\
+    \vspace{0.5em}
+    \large{Computer Engineering, Chulalongkorn Univerity}
+}
+\author{Worralop Srichainont}
+\date{\today}
+\setlength{\droptitle}{15em}
+
+% DOCUMENT CONTENTS
+\begin{document}
+
+    \maketitle
+    \thispagestyle{empty}
+    \clearpage
+
+    \tableofcontents
+    \thispagestyle{empty}
+    \clearpage
+
+    \pagenumbering{arabic}
+
+    \section{Section I}
+        \subsection{Subsection I}
+            \textbf{Kyphosis} is a condition where your spine curves outward more than it should. This causes your upper back around the thoracic region (the part of your spine between your neck and ribs) to bend forward.
+        
+        \subsection{Subsection II}
+            The dataset has 81 rows and 4 columns which have the following details:
+            \begin{enumerate}
+                \item \textbf{\texttt{Kyphosis}} is the target column.
+                \begin{enumerate}
+                    \item \textbf{\texttt{absent}} means the spine has not deformed.
+                    \item \textbf{\texttt{present}} means the spine has deformed.
+                \end{enumerate}
+
+                \item \textbf{\texttt{Age}} is the age of the patient in months unit.
+                \item \textbf{\texttt{Number}} is the total number of vertebrae (spine bones) that were involved in the surgical procedure.
+                \item \textbf{\texttt{Start}} is the index of the topmost vertebra (spine bone) that was operated on.
+            \end{enumerate}
+
+    \pagebreak
+
+    \section{Section II}
+        \subsection{Subsection I}
+            To access the colab notebook, please follow this link: \texttt{\url{https://colab.research.google.com/drive/19gwAoeK6NIPp-c9uK-8UBJO1VauI06PL}}
+
+        \subsection{Subsection II}
+            Before we start, please import these libraries.
+
+            \begin{codeblock}{Dependencies}
+                import pandas as pd
+                import matplotlib.pyplot as plt
+                import seaborn as sns
+                from sklearn.model_selection import train_test_split
+                from sklearn.tree import DecisionTreeClassifier, plot_tree
+                from sklearn.ensemble import RandomForestClassifier
+                from sklearn.metrics import ConfusionMatrixDisplay, classification_report
+            \end{codeblock}
+
+    \pagebreak
+
+    \section{Section III}
+        \begin{table}[h]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                \rule{0pt}{2.5ex}
+                \textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} & \textbf{Support} \\
+                \hline \hline
+                \textbf{\texttt{absent}} & 0.9474 & 0.9000 & 0.9231 & 20 \\
+                \textbf{\texttt{present}} & 0.6667 & 0.8000 & 0.7273 & 5 \\
+                \hline
+            \end{tabular}
+            \caption{Class Metrics}
+        \end{table}
+
+        \begin{table}[h]
+            \centering
+            \begin{tabular}{|c|c|c|}
+                \hline
+                \rule{0pt}{2.5ex}
+                \textbf{Accuracy} & \textbf{Macro F1 Score} & \textbf{Weighted F1 Score} \\
+                \hline \hline
+                0.8800 & 0.8252 & 0.8839 \\
+                \hline
+            \end{tabular}
+            \caption{Overall Metrics}
+        \end{table}
+
+        \noindent \textbf{Result}: This decision tree model got \textbf{0.8252 F1 Macro Score}.
+\end{document}
