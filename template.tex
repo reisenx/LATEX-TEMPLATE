@@ -6,17 +6,29 @@
 \usepackage{titling}
 \usepackage{enumitem}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage{hyperref}
 
 % FONT AND ENCODING SETUP
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
 \usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage[Thai]{ucharclasses}
+\setdefaultlanguage{english}
+\setotherlanguage{thai}
+\setTransitionsFor{Thai}{\thaifont}{\normalfont}
+\newfontfamily{\thaifont}{THSarabun.ttf}[
+    Path=./,
+    BoldFont=THSarabunBold.ttf,
+    ItalicFont=THSarabunItalic.ttf,
+    BoldItalicFont=THSarabunBoldItalic.ttf,
+    Scale=1.23
+]
+\XeTeXlinebreaklocale "th"
+\XeTeXlinebreakskip = 0pt plus 1pt
 
 % PROFESSIONAL CODE BLOCK
 \usepackage{tcolorbox}
@@ -35,6 +47,7 @@
     colback=ghback,
     colframe=ghborder,
     coltitle=ghtext,
+    colupper=ghtext,
     fonttitle=\bfseries\small,
     arc=3mm,
     boxrule=0.5mm,
@@ -153,4 +166,31 @@
         \end{table}
 
         \noindent \textbf{Result}: This decision tree model got \textbf{0.8252 F1 Macro Score}.
+
+    \pagebreak
+
+    \section{การประยุกต์ใช้การอินทิเกรต (Integration Application)}
+        หากกำหนดอัตราการไหลของอากาศเข้าสู่ปอด ซึ่งเขียนด้วยฟังก์ชัน $f(t) = \frac{1}{2}\sin\left( \frac{2 \pi t}{5} \right)$ ในหน่วยลิตรต่อวินาที
+
+        \vspace{0.5em}
+
+        \noindent เราจะสามารถเขียนปริมาณของอากาศภายในปอด ในช่วงวินาทีที่ 0 ถึงวินาทีที่ t ได้ดังนี้ $V(t) = \int_{0}^{t} f(t) \,dt$
+
+        \vspace{0.5em}
+
+        \noindent กำหนดให้ $u = \frac{2\pi}{5}t$ จะได้ว่า $\,du = \frac{2\pi}{5}\,dt$
+        \begin{align*}
+            \int_{0}^{t} f(t) \,dt &= \int_{0}^{t} \frac{1}{2} \sin \left( \frac{2\pi}{5}t \right) \,dt \\[1em]
+            \int_{0}^{t} f(t) \,dt &= \frac{5}{4\pi} \int_{0}^{t} \sin \left( \frac{2\pi}{5}t \right) \cdot \frac{2\pi}{5} \,dt \\[1em]
+            \int_{0}^{t} f(t) \,dt &= \frac{5}{4\pi} \int_{0}^{t} \sin(u) \,du \\[1em]
+            \int_{0}^{t} f(t) \,dt &= \frac{5}{4\pi} \int_{0}^{\frac{2\pi}{5}t} \sin(u) \,du \\[1em]
+            \int_{0}^{t} f(t) \,dt &= \frac{5}{4\pi} \left[ -\cos(u) \right]_{0}^{\frac{2\pi}{5}t} \\[1em]
+            \int_{0}^{t} f(t) \,dt &= \frac{5}{4\pi} \left[ -\cos\left( \frac{2\pi}{5}t \right) - (-\cos(0)) \right] \\[1em]
+            \int_{0}^{t} f(t) \,dt &= \frac{5}{4\pi} \left[ 1 -\cos\left( \frac{2\pi}{5}t \right) \right]
+        \end{align*}
+        \noindent \textbf{ดังนั้น} จึงสามารถเขียนฟังก์ชันปริมาณของอากาศภายในปอด ณ วินาทีที่ t ได้เป็น $V(t) = \frac{5}{4\pi} \left[ 1 -\cos\left( \frac{2\pi}{5}t \right) \right]$
+
+        \vspace{0.5em}
+
+        \noindent ตัวอักษรปกติ \textbf{ตัวอักษรหนา} \textit{ตัวอักษรเอียง} \textbf{\textit{ตัวอักษรหนาและเอียง}} \underline{ขีดเส้นใต้}
 \end{document}
