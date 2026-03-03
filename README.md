@@ -1,4 +1,4 @@
-# LATEX-TEMPLATE
+# ReisenX's LaTeX Template
 
 My personal LaTeX `article` class template for personal usage on documentation and university assignments.
 
