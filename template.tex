@@ -13,6 +13,7 @@
 \usepackage{listings}
 \usepackage{hyperref}
 \usepackage{csquotes}
+\usepackage{tocloft}
 
 % FONT AND ENCODING SETUP
 \usepackage{fontspec}
@@ -40,7 +41,7 @@
 \definecolor{ghtext}{HTML}{c9d1d9}    % Light gray text
 \definecolor{ghborder}{HTML}{30363d}  % GitHub Border color
 
-% PROFESSIONAL CODE BLOCK CONFIGURATION (MINTED VERSION) %
+% CODE BLOCK CONFIGURATION (MINTED) %
 \renewcommand{\theFancyVerbLine}{\textcolor{white!60!gray}{\scriptsize\arabic{FancyVerbLine}}}
 \newtcblisting{codeblock}[2][]{
     enhanced,
@@ -80,11 +81,14 @@
     \vspace{1em}
 	\Large{\textbf{Homework 3: Decision Tree}} \\
     \vspace{0.5em}
-    \large{Computer Engineering, Chulalongkorn Univerity}
+    \large{Computer Engineering, Chulalongkorn University}
 }
 \author{Worralop Srichainont}
 \date{\today}
 \setlength{\droptitle}{15em}
+
+% DISABLE PAGE NUMBER IN TABLE OF CONTENTS
+\tocloftpagestyle{empty}
 
 % DOCUMENT CONTENTS
 \begin{document}
