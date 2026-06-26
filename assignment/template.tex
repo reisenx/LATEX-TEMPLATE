@@ -1,0 +1,274 @@
+% DOCUMENT CLASS SETUP %
+\documentclass[12pt, a4paper]{article}
+
+% DOCUMENT PACKAGES %
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titling}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage{tocloft}
+\usepackage{array}
+
+% FONT AND ENCODING SETUP %
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage[Thai]{ucharclasses}
+\setdefaultlanguage{english}
+\setotherlanguage{thai}
+\setTransitionsFor{Thai}{\thaifont}{\normalfont}
+\newfontfamily{\thaifont}{THSarabun.ttf}[
+    Path=./fonts/,
+    BoldFont=THSarabunBold.ttf,
+    ItalicFont=THSarabunItalic.ttf,
+    BoldItalicFont=THSarabunBoldItalic.ttf,
+    Scale=1.23
+]
+\XeTeXlinebreaklocale "th"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+% CODE BLOCK PACKAGES %
+\usepackage{tcolorbox}
+\tcbuselibrary{minted, skins, breakable}
+
+% DEFINE GITHUB DARK THEME COLORS %
+\definecolor{ghback}{HTML}{0d1117}
+\definecolor{ghtext}{HTML}{c9d1d9}
+\definecolor{ghborder}{HTML}{30363d}
+
+% CODE BLOCK CONFIGURATION %
+\renewcommand{\theFancyVerbLine}{\textcolor{white!60!gray}{\scriptsize\arabic{FancyVerbLine}}}
+\newtcblisting{codeblock}[3][]{
+    enhanced,
+    breakable,
+    colback=ghback,
+    colframe=ghborder,
+    coltitle=ghtext,
+    colupper=ghtext,
+    fonttitle=\bfseries\small,
+    arc=3mm,
+    boxrule=0.5mm,
+    % PADDING SETTINGS %
+    left=25pt,
+    right=10pt,
+    top=5pt,
+    bottom=5pt,
+    % MINTED SETTINGS %
+    listing engine=minted,
+    listing only,
+    minted language=#2,
+    minted options={
+        linenos,
+        numbersep=5pt,
+        fontsize=\footnotesize,
+        breaklines=true,
+        breakanywhere=true,
+        autogobble,
+        style=monokai,
+    },
+    title={#3},
+    #1
+}
+
+% DOCUMENT TITLE SETUP %
+\title {
+	\textbf{2110999 INTRODUCTION TO \LaTeX} \\
+    \vspace{1em}
+	\Large{\textbf{\LaTeX\ Document Template}} \\
+    \vspace{0.5em}
+    \large{Computer Engineering, Chulalongkorn University}
+}
+\author{Worralop Srichainont}
+\date{\today}
+\setlength{\droptitle}{15em}
+
+% DISABLE PAGE NUMBER IN TABLE OF CONTENTS
+\tocloftpagestyle{empty}
+
+% DOCUMENT CONTENTS
+\begin{document}
+
+    % COVER PAGE %
+    \maketitle
+    \thispagestyle{empty}
+    \clearpage
+
+    % TABLE OF CONTENTS PAGE %
+    \tableofcontents
+    \thispagestyle{empty}
+    \clearpage
+
+    % DOCUMENT BODY %
+    \pagenumbering{arabic}
+
+    \part{Introduction}
+
+        This document serves as Worralop Srichainont's personal \LaTeX\ template for lecture notes and assignment reports.
+        You can find the source code published in my \href{https://github.com/reisenx/LATEX-TEMPLATE}{GitHub repository}.
+        It features a simple cover page, a table of contents, and code snippet formatting using the \texttt{minted} package.
+        It also fully supports ภาษาไทย (Thai language) using the THSarabunPSK font.
+        You are free to use and modify this template without any restrictions.
+
+        \vspace{1em}
+
+        Before compiling this document, you will need to install the Pygments library for the \texttt{minted} package.
+        You can easily do this in your terminal using the following command:
+        \begin{codeblock}{bash}{}
+            pip install Pygments
+        \end{codeblock}
+
+        \vspace{1em}
+
+        For your \LaTeX\ editor, \href{https://www.overleaf.com/}{\textbf{Overleaf}} is the easiest online option.
+        If you prefer to work locally, you can install \LaTeX\ on your computer via \href{https://miktex.org/download}{\textbf{MikTeX}}
+        and use a text editor such as \href{https://code.visualstudio.com/}{\textbf{Visual Studio Code}}
+        or \href{https://www.xm1math.net/texmaker/}{\textbf{TeXMaker}}.
+        Please note that using Visual Studio Code requires an additional plugin, such as the LaTeX Workshop extension by James Yu.
+
+        \vspace{1em}
+
+        To successfully compile this document, please select \textbf{XeLaTeX} as the compiler in Overleaf or your local editor's settings.
+        Alternatively, you can manually run this command in your terminal:
+        \begin{codeblock}{bash}{}
+            xelatex -shell-escape -interaction=nonstopmode template.tex
+        \end{codeblock}
+
+        \vspace{1em}
+
+        Lastly, the remainder of this document serves as a practical demonstration of various \LaTeX\ commands.
+        It includes examples of text formatting, lists, tables, mathematical notation, images, and code snippets.
+        Feel free to explore the following pages as a helpful reference.
+        I hope you find this template useful for your coursework and projects, and please enjoy using it!
+
+    \pagebreak
+
+    \part{Text Formatting}
+        \section{Font Styles}
+            \LaTeX\ has various of font styles just like other document editor such as Microsoft Word.
+
+            \subsection{English}
+
+                \begin{table}[h]
+                    \centering
+                    \setlength{\extrarowheight}{2pt}
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        \textbf{Command} & \textbf{Example} \\
+                        \hline \hline
+                        \texttt{text} & Normal text \\
+                        \texttt{\textbackslash textnormal\{text\}} & \textnormal{Normal text} \\
+                        \texttt{\textbackslash textbf\{text\}} & \textbf{Bold text} \\
+                        \texttt{\textbackslash textit\{text\}} & \textit{Italic text} \\
+                        \texttt{\textbackslash emph\{text\}} & \emph{Emphasized} \\
+                        \texttt{\textbackslash underline\{text\}} & \underline{Underline} \\
+                        \texttt{\textbackslash textsc\{text\}} & \textsc{Small Caps} \\
+                        \texttt{\textbackslash texttt\{text\}} & \texttt{Typewriter family} \\
+                        \texttt{\textbackslash textrm\{text\}} & \textrm{Roman family} \\
+                        \texttt{\textbackslash textsf\{text\}} & \textsf{Sans serif family} \\
+                        \hline
+                    \end{tabular}
+                \end{table}
+
+            \subsection{ภาษาไทย}
+
+                \begin{table}[h]
+                    \centering
+                    \setlength{\extrarowheight}{2pt}
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        \textbf{Command} & \textbf{Example} \\
+                        \hline \hline
+                        \texttt{text} & ข้อความ \\
+                        \texttt{\textbackslash textnormal\{text\}} & \textnormal{ข้อความ} \\
+                        \texttt{\textbackslash textbf\{text\}} & \textbf{ข้อความ} \\
+                        \texttt{\textbackslash textit\{text\}} & \textit{ข้อความ} \\
+                        \texttt{\textbackslash emph\{text\}} & \emph{ข้อความ} \\
+                        \texttt{\textbackslash underline\{text\}} & \underline{ข้อความ} \\
+                        \hline
+                    \end{tabular}
+                \end{table}
+
+            \subsection{Sample Text}
+
+                In Bangkok, \textbf{everywhere you look} is amazing food. To sound like a local, say \textit{bhed nid noi}
+                (\textit{เผ็ดนิดหน่อย}), meaning \emph{a little bit spicy}.
+
+                \vspace{0.5em}
+
+                Navigate the city using \texttt{Google Maps} or the \textsf{BTS Skytrain} (\textnormal{รถไฟฟ้า}).
+                If writing a formal journal, you might start with \textsc{Chapter One} in the standard \textrm{Roman font family}.
+                Wherever you go, remember the most important phrase: \underline{Sawatdee krap} (\textnormal{สวัสดีครับ})!
+
+    \pagebreak
+
+        \section{Font Size}
+
+            Font sizes are identified by special names, the actual size is not absolute but relative to the font size declared in the 
+            \texttt{\textbackslash documentclass} statement.
+
+            \subsection{English}
+                \begin{table}[h]
+                    \centering
+                    \setlength{\extrarowheight}{8pt}
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        \textbf{Command} & \textbf{Example} \\
+                        \hline \hline
+                        \texttt{\{\textbackslash tiny text\}} & {\tiny Tiny} \\
+                        \texttt{\{\textbackslash scriptsize text\}} & {\scriptsize Script size} \\
+                        \texttt{\{\textbackslash footnotesize text\}} & {\footnotesize Footnote size} \\
+                        \texttt{\{\textbackslash small text\}} & {\small Small} \\
+                        \texttt{text} & Normal size \\
+                        \texttt{\{\textbackslash normalsize text\}} & {\normalsize Normal size} \\
+                        \texttt{\{\textbackslash large text\}} & {\large large} \\
+                        \texttt{\{\textbackslash Large text\}} & {\Large Large} \\
+                        \texttt{\{\textbackslash LARGE text\}} & {\LARGE LARGE} \\
+                        \texttt{\{\textbackslash huge text\}} & {\huge huge} \\
+                        \texttt{\{\textbackslash Huge text\}} & {\Huge Huge} \\
+                        \hline
+                    \end{tabular}
+                \end{table}
+
+            \subsection{ภาษาไทย}
+                \begin{table}[h]
+                    \centering
+                    \setlength{\extrarowheight}{8pt}
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        \textbf{Command} & \textbf{Example} \\
+                        \hline \hline
+                        \texttt{\{\textbackslash tiny text\}} & {\tiny เล็กมากที่สุด} \\
+                        \texttt{\{\textbackslash scriptsize text\}} & {\scriptsize เล็กมาก} \\
+                        \texttt{\{\textbackslash footnotesize text\}} & {\footnotesize เล็กลง} \\
+                        \texttt{\{\textbackslash small text\}} & {\small เล็ก} \\
+                        \texttt{text} & ปกติ \\
+                        \texttt{\{\textbackslash normalsize text\}} & {\normalsize ปกติ} \\
+                        \texttt{\{\textbackslash large text\}} & {\large ใหญ่} \\
+                        \texttt{\{\textbackslash Large text\}} & {\Large ใหญ่ขึ้น} \\
+                        \hline
+                    \end{tabular}
+                \end{table}
+
+    \pagebreak
+
+                \begin{table}[h]
+                    \centering
+                    \setlength{\extrarowheight}{8pt}
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        \textbf{Command} & \textbf{Example} \\
+                        \hline \hline
+                        \texttt{\{\textbackslash LARGE text\}} & {\LARGE ใหญ่มาก} \\
+                        \texttt{\{\textbackslash huge text\}} & {\huge ใหญ่มากมาก} \\
+                        \texttt{\{\textbackslash Huge text\}} & {\Huge ใหญ่ที่สุด} \\
+                        \hline
+                    \end{tabular}
+                \end{table}
+
+\end{document}
