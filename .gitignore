@@ -14,13 +14,308 @@
 *.ruff_cache
 *.mypy_cache
 
+###############################################################################
 # LaTeX
-*_minted
-*.tex.bak
-*.listing
+###############################################################################
+
+# Core latex/pdflatex auxiliary files
 *.aux
+*.lof
 *.log
+*.lot
+*.fls
 *.out
-*.synctex.gz
-*.tex.bak
 *.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+.*.lb
+
+# Intermediate documents
+*.dvi
+*.xdv
+*-converted-to.*
+.pdf
+
+# Bibliography auxiliary files (bibtex/biblatex/biber)
+*.bbl
+*.bbl-SAVE-ERROR
+*.bcf
+*.bcf-SAVE-ERROR
+*.blg
+*-blx.aux
+*-blx.bib
+*.run.xml
+
+# Build tool auxiliary files
+*.fdb_latexmk
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdfsync
+*.rubbercache
+rubber.cache
+latex.out/
+
+# algorithms
+*.alg
+*.loa
+
+# achemso
+acs-*.bib
+
+# amsthm
+*.thm
+
+# attachfile2
+*.atfi
+
+# beamer
+*.nav
+*.pre
+*.snm
+*.vrb
+
+# changes
+*.soc
+*.loc
+
+# comment
+*.cut
+
+# context
+*.tuc
+*.tui
+*.tuo
+
+# cprotect
+*.cpt
+
+# elsarticle
+*.spl
+
+# endnotes
+*.ent
+
+# fixme
+*.lox
+
+# glossaries
+*.acn
+*.acr
+*.glg
+*.glg-abr
+*.glo
+*.glo-abr
+*.gls
+*.gls-abr
+*.glsdefs
+*.lzo
+*.lzs
+*.slg
+*.slo
+*.sls
+
+# gnuplot
+*.gnuplot
+*.table
+*-gnuplottex-*
+
+# gregoriotex
+*.gaux
+*.glog
+*.gtex
+
+# htlatex
+*.4ct
+*.4tc
+*.idv
+*.lg
+*.trc
+*.xref
+
+# hypdoc / hyperref
+*.hd
+*.brf
+
+# knitr
+*-concordance.tex
+*-tikzDictionary
+
+# listings / tcolorbox
+*.lol
+*.listing
+
+# luatexja-ruby
+*.ltjruby
+
+# makeidx
+*.idx
+*.ilg
+*.ind
+*.lpz
+
+# minitoc
+*.maf
+*.mlf
+*.mlt
+*.mtc[0-9]*
+*.slf[0-9]*
+*.slt[0-9]*
+*.stc[0-9]*
+
+# minted
+_minted*
+*_minted
+*.data.minted
+*.pyg
+
+# morewrites
+*.mw
+
+# newpax / pax
+*.newpax
+*.pax
+
+# pdfpcnotes
+*.pdfpc
+
+# sagetex
+*.sagetex.sage
+*.sagetex.py
+*.sagetex.scmd
+
+# scrwfile
+*.wrt
+
+# spelling
+*.spell.bad
+*.spell.txt
+
+# svg
+svg-inkscape/
+
+# sympy
+*.sout
+*.sympy
+sympy-plots-for-*.tex/
+
+# pdfcomment
+*.upa
+*.upb
+
+# pythontex
+*.pytxcode
+pythontex-files-*/
+
+# thmtools
+*.loe
+
+# TikZ & PGF
+*.dpth
+*.md5
+*.auxlock
+
+# titletoc
+*.ptc
+
+# todonotes / easy-todo
+*.tdo
+*.lod
+
+# vhistory
+*.hst
+*.ver
+
+# xcolor / xmpincl / xindy / xypic / xwatermark
+*.xcp
+*.xmpi
+*.xdy
+*.xyc
+*.xyd
+*.xwm
+
+# endfloat
+*.ttt
+*.fff
+
+# standalone
+*.sta
+
+# Latexian / WinEdt / latexindent / Texpad / LyX / Kile / gummi / KBibTeX / TeXnicCenter
+TSWLatexianTemp*
+*.bak
+*.tex.bak
+*.sav
+*.bak[0-9]*
+.texpadtmp
+*.lyx~
+*.backup
+.*.swp
+*~[0-9]*
+*.tps
+
+# emacs / auctex
+./auto/*
+*.el
+
+# expex
+*-tags.tex
+
+###############################################################################
+# macOS
+###############################################################################
+
+.DS_Store
+.AppleDouble
+.LSOverride
+.localized
+__MACOSX/
+
+# Resource forks
+._*
+
+# Thumbnails / Finder metadata
+Icon?
+
+# Volume / Time Machine / Spotlight leftovers
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# AFP share leftovers
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+###############################################################################
+# Windows
+###############################################################################
+
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+###############################################################################
+# Linux
+###############################################################################
+
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+nohup.out
+lost+found
